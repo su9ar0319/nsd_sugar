@@ -80,7 +80,52 @@
   removeControls(view.root);
  }
  function getHeight(view){
-  return Math.ceil(Math.max(view.root.scrollHeight,view.root.getBoundingClientRect().height));
+  // scrollHeight can include viewport-sized empty space on mobile captures.
+  // Measure the visible report and its last actual element instead.
+  const root=view.root,rect=root.getBoundingClientRect();
+  const style=getComputedStyle(root);
+  const bottomInset=(parseFloat(style.paddingBottom)||0)+(parseFloat(style.borderBottomWidth)||0);
+  let contentBottom=0;
+  for(const child of root.children){
+   const b=child.getBoundingClientRect();
+   if(b.height>0)contentBottom=Math.max(contentBottom,b.bottom-rect.top);
+  }
+  return Math.ceil(Math.max(1,rect.height,contentBottom+bottomInset));
+ }
+ function trimBlankBottom(canvas){
+  // html2canvas may return an oversized white tail even when the DOM
+  // boundaries are accurate. Trim only completely pale empty rows.
+  const w=canvas.width,h=canvas.height;
+  if(w<100||h<200)return canvas;
+  let last=-1;
+  try{
+   const ctx=canvas.getContext("2d",{willReadFrequently:true});
+   const step=Math.max(1,Math.floor(w/100));
+   for(let end=h;end>0&&last<0;){
+    const blockHeight=Math.min(192,end),top=end-blockHeight;
+    const rgba=ctx.getImageData(0,top,w,blockHeight).data;
+    outer:for(let row=blockHeight-1;row>=0;row--){
+     for(let x=0;x<w;x+=step){
+      const i=(row*w+x)*4;
+      if(rgba[i]<249||rgba[i+1]<249||rgba[i+2]<249){
+       last=top+row;break outer;
+      }
+     }
+    }
+    end=top;
+   }
+  }catch(error){
+   // Never lose an image because pixel inspection is blocked.
+   return canvas;
+  }
+  if(last<0)return canvas;
+  const padding=Math.max(12,Math.round(w*.014));
+  const wanted=Math.min(h,last+1+padding);
+  if(h-wanted<32)return canvas;
+  const clipped=document.createElement("canvas");
+  clipped.width=w;clipped.height=wanted;
+  clipped.getContext("2d").drawImage(canvas,0,0,w,wanted,0,0,w,wanted);
+  return clipped;
  }
  function grouping(nodes){
   const units=[],pending=[];
@@ -179,7 +224,7 @@
     scrollX:0,scrollY:0
    });
    if(!canvas||canvas.width<100||canvas.height<30)throw new Error("화면 캡처가 비어 있습니다.");
-   return canvas;
+   return trimBlankBottom(canvas);
   }finally{v.stage.remove()}
  }
  function socialCanvas(raw){
