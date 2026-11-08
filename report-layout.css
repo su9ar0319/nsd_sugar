@@ -1,0 +1,34 @@
+/* NSD Chroma / final report-only card balance. No color/score logic changes. */
+.card.result .chroma-choice-grid{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:12px;
+ align-items:stretch;
+ margin-top:13px;
+}
+.card.result .chroma-choice-grid > .memory-card{
+ margin:0;
+ min-width:0;
+ height:100%;
+ overflow-wrap:anywhere;
+ word-break:keep-all;
+}
+.card.result .chroma-choice-grid > .memory-card p{
+ line-height:1.92;
+}
+@media(max-width:940px){
+ .card.result .chroma-choice-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+ }
+}
+@media(max-width:620px){
+ .card.result .chroma-choice-grid{
+  grid-template-columns:minmax(0,1fr);
+ }
+}
+@media print{
+ .card.result .chroma-choice-grid > .memory-card{
+  break-inside:avoid;
+  page-break-inside:avoid;
+ }
+}
