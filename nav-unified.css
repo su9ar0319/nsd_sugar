@@ -1,0 +1,32 @@
+/* NSD unified functional navigation / release polish.
+   Identical sizing for Chroma, Sensory and Gate; each lab retains
+   its own active colors, typography hierarchy, and report styling. */
+.nav,.site-nav{
+ display:flex;
+ align-items:stretch;
+ flex-wrap:wrap;
+ gap:7px;
+ margin:17px 0 21px;
+}
+.nav button,.site-nav button{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ box-sizing:border-box;
+ min-height:40px;
+ padding:9px 15px;
+ border-radius:7px;
+ font-size:12.5px;
+ font-weight:760;
+ line-height:1.35;
+ text-align:center;
+ white-space:nowrap;
+}
+@media(max-width:660px){
+ .nav,.site-nav{gap:6px}
+ .nav button,.site-nav button{
+  min-height:38px;
+  padding:8px 12px;
+  font-size:12px;
+ }
+}
