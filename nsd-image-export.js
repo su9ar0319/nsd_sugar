@@ -88,6 +88,18 @@
   const isChapter=x=>x.matches(".chapter,.gate-v7-chapter,.solo-chapter");
   for(const node of nodes){
    if(isChapter(node)){flush();pending.push(node);continue;}
+   if(node.matches(".solo-summary-grid")&&node.children.length>2){
+    const cards=many(":scope > .solo-summary-card",node);
+    if(cards.length>2){
+     for(let i=0;i<cards.length;i+=2){
+      const part=node.cloneNode(false);
+      cards.slice(i,i+2).forEach(card=>part.appendChild(card.cloneNode(true)));
+      if(i===0&&pending.length){pending.push(part);flush();}
+      else units.push([part]);
+     }
+     continue;
+    }
+   }
    if(node.matches(".simulation")&&node.querySelectorAll(":scope > .stage").length>1){
     const stages=many(":scope > .stage",node);
     stages.forEach((s,i)=>{
