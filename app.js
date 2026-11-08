@@ -70,7 +70,7 @@ ${lineSection(4,'그리움이 지나간 자리',esc(t.memory))}
 ${lineSection(5,'다음 계절을 걷는 법',esc(t.healing))}
 ${lineSection(6,'탑·하트·베이스의 이야기',esc(t.perfume))}
 ${lineSection(7,'타인에게 남는 인상',esc(t.afterglow))}
-<div class="section"><h3>08. 선택의 흔적 · 여섯 장면</h3><p class="sub">결과에 반영된 사건 선택의 일부입니다. 어떤 선택이 옳았는지를 평가하지 않습니다.</p>${selected}</div>
+<div class="section"><h3>08. 선택의 흔적 · 여섯 장면</h3><p class="sub">결과에 반영된 사건 선택의 일부입니다. 어떤 선택이 옳았는지를 평가하지 않습니다.</p><div class="chroma-choice-grid">${selected}</div></div>
 <div class="section"><h3>09. 여섯 개의 내면 좌표</h3>${statBars(p)}<p class="micro" style="margin-top:13px">점수가 높다고 더 건강하거나 더 좋은 캐릭터를 뜻하는 것은 아닙니다. 색과 향은 상징적 창작 해석으로만 사용해 주세요.</p></div>
 <div class="row actions"><button class="btn soft" onclick="pairFrom('${esc(p.id)}')">이 캐릭터로 페어 비교 →</button><button class="btn ghost" onclick="window.print()">인쇄 · PDF 저장</button></div></section>`;}
 function pairFrom(id){state.choiceA=id;state.choiceB=allProfiles().find(x=>x.id!==id)?.id||'';switchTo('pair');}
