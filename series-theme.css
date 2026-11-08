@@ -1,0 +1,221 @@
+/* NSD RESEARCH SERIES / MID-UNIFIED DESIGN V1
+ * Shared direction: charcoal & warm-white structural design from Gate Lab.
+ * Preserved: questionnaire behavior, roleplay data, dynamic result swatches.
+ */
+:root{
+ --ink:#242326;
+ --navy:#202124;
+ --pale:#F5F3F0;
+ --paper:#FFFFFF;
+ --line:#E2DEDA;
+ --muted:#6D696C;
+ --tint:#F7F6F4;
+ --accent:#4E6A86;
+ --accent-blue:#4E6A86;
+ --success:#447E6B;
+ --lab-accent:#4E6A86;
+ --lab-dark:#405A74;
+ --lab-wash:#EDF1F5;
+ --lab-softline:#D5E0E9;
+ --lab-shadow:0 7px 28px rgba(24,24,26,.045);
+}
+html{color-scheme:light}
+body{background:#F5F3F0;color:#242326;line-height:1.75}
+a{color:var(--lab-dark);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--lab-accent)}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--lab-accent);outline-offset:3px}
+::selection{background:var(--lab-wash);color:#252427}
+.shell{max-width:1160px}
+.hero{
+ background:linear-gradient(116deg,#19191B 0%,#242427 63%,#303136 100%);
+ border:1px solid #3D3B3D;border-bottom:3px solid var(--lab-accent);
+ border-radius:15px;padding:42px 44px 38px;
+ margin-top:24px;margin-bottom:18px;
+ box-shadow:0 14px 38px rgba(24,22,26,.13);
+ isolation:isolate;
+}
+.hero::before{
+ content:"";position:absolute;z-index:0;
+ width:510px;height:360px;right:-36px;top:-62px;
+ border:0;border-radius:0;box-shadow:none;
+ background:repeating-linear-gradient(0deg,transparent 0 31px,rgba(255,255,255,.048) 32px,transparent 33px),repeating-linear-gradient(90deg,transparent 0 31px,rgba(255,255,255,.048) 32px,transparent 33px);
+ transform:skewX(-11deg);pointer-events:none;
+}
+.hero::after{
+ content:"01";position:absolute;z-index:0;pointer-events:none;
+ right:38px;top:10px;font-size:clamp(106px,17vw,212px);line-height:1;
+ font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+ font-weight:900;letter-spacing:-.10em;color:rgba(255,255,255,.09);
+}
+.hero>:not(.hero::before){position:relative;z-index:1}
+.overline{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:850;letter-spacing:.20em;color:#DAD7D6;opacity:1}
+.overline::before{content:"";height:9px;width:9px;border-radius:1px;background:var(--lab-accent);flex:0 0 9px}
+.hero h1{font-size:clamp(25px,3.4vw,39px);color:#FFFCFA;font-weight:850;letter-spacing:-.055em;line-height:1.29;margin:12px 0 11px;max-width:760px}
+.hero p{max-width:675px;color:#D6D0CD;font-size:14px;line-height:1.9}
+.hero-tags{gap:7px;margin-top:22px;max-width:850px}
+.hero-tags span{
+ background:rgba(255,255,255,.046);color:#DFDCDA;
+ border:1px solid rgba(255,255,255,.19);
+ padding:5px 10px;border-radius:5px;
+ font-size:10.5px;font-weight:700;letter-spacing:.015em
+}
+.hero-tags span:first-child{border-color:rgba(141,174,210,.49);color:#D6E5F4;background:rgba(78,106,134,.22)}
+/* The 3 compact lab-link cards live directly below the hero. */
+.nsd-lab-switch{margin:0 0 11px}
+.nsd-lab-banner{border-radius:8px;min-height:69px;box-shadow:0 2px 8px rgba(25,25,25,.035)}
+.nsd-lab-banner.is-current{border-color:var(--lab-softline);background:var(--lab-wash)}
+.nsd-lab-banner.is-current .nsd-lab-banner__action{background:#FFFFFF;color:var(--lab-dark)}
+/* Section navigation matches Gate Lab's squared-off tabs. */
+.nav{gap:7px;margin:17px 0 21px}
+.nav button{
+ background:#FFFFFF;border:1px solid #DDD8D4;
+ border-radius:7px;color:#5C575A;
+ padding:10px 15px;font-size:12.5px;
+ font-weight:760;box-shadow:0 1px 1px rgba(0,0,0,.02);
+ transition:background .14s,border-color .14s,color .14s;
+}
+.nav button:hover{border-color:#B5AEAA;background:#FAF8F7;color:#2F2D30}
+.nav button.active{
+ background:#202124;border-color:#202124;color:#FFF;
+ box-shadow:inset 0 -3px 0 var(--lab-accent)
+}
+/* White documents with clear separators, less gradient/card noise. */
+.card{background:#FFFFFF;border:1px solid #E2DEDA;border-radius:12px;margin-bottom:17px;padding:24px 27px;box-shadow:var(--lab-shadow)}
+.card h2{color:#272529;font-size:clamp(19px,2.5vw,24px);line-height:1.45;letter-spacing:-.04em}
+.card h3{color:#343135;line-height:1.5}
+.sub,.small,.micro{color:#747073}
+.kicker,.report-eyebrow,.analysis-label{color:var(--lab-dark);font-weight:900;letter-spacing:.14em}
+.field-label{color:#524D50}
+.field,.rating{
+ background:#FFFFFF;color:#272629;border:1px solid #D6D0CC;
+ border-radius:7px;min-height:43px;
+}
+.field:hover,.rating:hover{border-color:#ADA5A0}
+.btn{
+ background:#202124;color:#FFF;border:1px solid #202124;border-radius:7px;
+ box-shadow:inset 0 -2px 0 var(--lab-accent);
+ padding:10px 16px;font-weight:800;
+ transition:background .14s,border-color .14s,transform .14s;
+}
+.btn:hover:not(:disabled){background:#333337;border-color:#333337}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn.ghost{
+ background:#FFF;color:#343236;border-color:#D9D3CF;
+ box-shadow:none
+}
+.btn.ghost:hover:not(:disabled){background:#F8F6F4}
+.btn.soft,.btn.light{
+ background:#F6F4F1;color:#444044;border-color:#DEDAD6;
+ box-shadow:none
+}
+.btn.soft:hover:not(:disabled),.btn.light:hover:not(:disabled){background:#EDEAE7}
+.btn.warn{background:#FFF9F8;color:#8C3F44;border-color:#E5CECA;box-shadow:none}
+.btn.warn:hover:not(:disabled){background:#FAEEEE}
+.pill{border-radius:6px;background:var(--lab-wash);border:1px solid var(--lab-softline);color:var(--lab-dark);padding:4px 9px}
+.hint{
+ background:#F7F5F2;color:#585254;border:1px solid #E5DFDA;
+ border-left:3px solid var(--lab-accent);
+ border-radius:7px;line-height:1.8
+}
+.notice{background:#FBF5EB;color:#70583E;border-color:#E8DAC3;border-radius:7px}
+.progress-number{border-radius:6px;background:var(--lab-wash);color:var(--lab-dark)}
+.step{background:#E5E1DD;height:5px}
+.step.active{background:var(--lab-accent)}
+/* Questionnaire */
+.q{padding:17px 0;border-bottom:1px solid #EBE6E2;gap:16px}
+.q strong{color:var(--lab-dark);font-weight:900;letter-spacing:.025em}
+.q span{color:#373438;line-height:1.85}
+.rating{padding:10px 10px;min-width:100px;font-weight:800}
+.scenario{border-color:#E8E3DF;padding:20px 0}
+.scenario p{color:#524E50;line-height:1.85}
+.opts{gap:8px}
+.opt{
+ background:#FFFEFD;border:1px solid #DED8D4;
+ border-radius:8px;padding:13px 15px;color:#464246;
+ line-height:1.75;transition:background .14s,border-color .14s;
+}
+.opt:hover{background:#FAF7F5}
+.opt:has(input:checked){
+ background:var(--lab-wash);border-color:var(--lab-accent);
+ box-shadow:inset 3px 0 0 var(--lab-accent);color:#302C30
+}
+.opt input{accent-color:var(--lab-accent);width:15px;height:15px;margin-top:5px}
+/* Records & report readability */
+.result{padding:30px}
+.result h2{color:#29272A;letter-spacing:-.045em}
+.report-sub,.meta-line{color:#777173}
+.section{border-color:#E6E1DD;padding:23px 0}
+.section h3{font-size:18px;color:#302D30;letter-spacing:-.025em}
+.section p{color:#474145;font-size:14px;line-height:2.03}
+.memory-card,.person,.perfume,.palette-chip{
+ background:#FAF9F7;border:1px solid #E5E0DC;border-radius:8px
+}
+.memory-card{padding:17px 19px}
+.memory-card b,.note-line b{color:var(--lab-dark)}
+.memory-card p{line-height:1.9;color:#514C50}
+.perfume{padding:21px 22px}
+.perfume h3{color:#363235}
+.perfume p{color:#625D60;line-height:1.95}
+.note-line{border-color:#E7E2DE}
+.person{padding:12px 14px}
+.person:hover{border-color:#C5BCB6}
+.empty{background:#FBFAF9;border-color:#CAC4C0;color:#777173;border-radius:8px}
+.track{height:6px;background:#E7E2DF}
+.track i{background:var(--lab-accent)}
+.metric{color:#4B4549}
+.foot{color:#837D7D;margin-top:43px}
+.toast{background:#202124;color:#FFF;border:1px solid #494344;border-radius:8px;box-shadow:0 8px 25px rgba(0,0,0,.17)}
+.accent-rule{background:var(--lab-accent)}
+/* Color swatch values / user output must remain untouched. */
+.swatch,.swatch.tiny,.blend{border-radius:9px}
+/* Section stacking and responsive states */
+@media(max-width:800px){
+ .hero{padding:30px 23px 27px;margin-top:12px;border-radius:11px}
+ .hero::after{font-size:125px;right:20px;top:40px}
+ .hero::before{right:-205px;opacity:.55}
+ .card{padding:20px}
+ .result{padding:21px}
+ .nav{gap:6px}
+ .nav button{padding:9px 12px;font-size:12px}
+}
+@media(max-width:530px){
+ .hero h1{font-size:27px}
+ .hero p{font-size:13px}
+ .hero-tags span{font-size:10px}
+ .q{grid-template-columns:minmax(0,1fr) 88px;gap:9px}
+ .rating{min-width:82px;padding:9px 6px}
+ .opt{padding:11px 12px}
+ .card{padding:18px 17px}
+ .result{padding:19px 16px}
+ .section p{line-height:1.95}
+}
+@media(prefers-reduced-motion:reduce){
+ .nav button,.btn,.opt{transition:none}
+}
+@media print{
+ body{background:white}
+ .hero,.nav,.nsd-lab-switch,.foot{display:none!important}
+ .card.result{border:0;box-shadow:none;padding:0}
+ .swatch,.blend{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+
+/* CHROMA LAB: dynamic swatch color is the interpretation; do not recolor it. */
+.swatch,.blend{
+ box-shadow:inset 0 0 0 1px rgba(20,18,21,.06);
+ border-radius:9px
+}
+.swatch h3{letter-spacing:-.035em}
+.palette-chip{background:#FAF9F7;border-radius:7px}
+.palette-chip i{border-radius:3px}
+.perfume{
+ background:#F8F7F5;
+ border:1px solid #E4DFDB;
+ border-left:3px solid var(--lab-accent)
+}
+.perfume h3{color:#302F33}
+.perfume p{color:#625D60}
+.note-line b{color:var(--lab-dark)}
+.solo-chapter{border-color:var(--lab-softline)}
+/* Keep multi-card palette comparisons close to the original but less rounded. */
+.comparison-swatches{gap:11px}
