@@ -1,0 +1,31 @@
+/* NSD report image sharing · used only in rendered result panels. */
+.nsd-export-tools{
+ display:flex;flex-wrap:wrap;align-items:center;gap:8px 9px;
+ margin:15px 0 4px;padding:17px 0 0;border-top:1px solid rgba(125,120,116,.19);
+}
+.nsd-image-button{
+ appearance:none;display:inline-flex;align-items:center;justify-content:center;
+ min-height:42px;padding:10px 15px;border:1px solid rgba(113,109,104,.23);
+ border-radius:8px;background:#FFFFFF;color:#272729;cursor:pointer;
+ font:700 12px/1.4 inherit;white-space:nowrap;
+ box-shadow:0 1px 0 rgba(0,0,0,.045);
+ transition:background .15s,border-color .15s,transform .15s;
+}
+.nsd-image-button:hover{
+ background:#F7F5F3;border-color:var(--accent,#888);
+ transform:translateY(-1px);
+}
+.nsd-image-button:first-child{
+ background:#252427;color:#FFFFFF;border-color:#252427;
+}
+.nsd-image-button:first-child:hover{background:#444145}
+.nsd-image-button:disabled{opacity:.5;cursor:progress;transform:none}
+.nsd-image-button:focus-visible{outline:3px solid #5A94AD;outline-offset:2px}
+.nsd-image-status{font-size:12px;color:#6B6665;flex-basis:100%;line-height:1.5}
+.nsd-image-status:empty{display:none}
+@media(max-width:650px){
+ .nsd-export-tools{gap:8px}
+ .nsd-image-button{flex:1 1 calc(50% - 8px);min-width:132px;min-height:43px;white-space:normal}
+ .nsd-image-button:last-of-type{flex-basis:100%}
+}
+@media print{.nsd-export-tools{display:none!important}}
