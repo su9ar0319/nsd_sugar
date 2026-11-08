@@ -31,8 +31,8 @@
   border-radius:4px;
   background:var(--lab-color);
 }
-.nsd-lab-banner--chroma{--lab-color:#4e748f}
-.nsd-lab-banner--sensory{--lab-color:#387f7d}
+.nsd-lab-banner--chroma{--lab-color:#D2A341}
+.nsd-lab-banner--sensory{--lab-color:#2C8490}
 .nsd-lab-banner--gate{--lab-color:#a23e43}
 .nsd-lab-banner__body{
   display:flex;
@@ -113,3 +113,14 @@ a.nsd-lab-banner:focus-visible{
 @media print{
   .nsd-lab-switch{display:none!important}
 }
+
+
+/* The laboratory switch has fixed, shared geometry across all three sites. */
+.nsd-lab-switch{width:100%;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.nsd-lab-banner{min-height:72px;box-sizing:border-box}
+.nsd-lab-banner--chroma{--lab-color:#D2A341}
+.nsd-lab-banner--sensory{--lab-color:#2C8490}
+.nsd-lab-banner--gate{--lab-color:#A23E43}
+.nsd-lab-banner.is-current{background:color-mix(in srgb,var(--lab-color) 7%,#fff);border-color:color-mix(in srgb,var(--lab-color) 45%,#DDD)}
+@supports not (background:color-mix(in srgb,red 10%,white)){.nsd-lab-banner.is-current{background:#F4F3F0}}
+@media(max-width:740px){.nsd-lab-switch{display:flex;gap:8px}.nsd-lab-banner{min-height:70px}}
