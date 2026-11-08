@@ -7,7 +7,7 @@
  appearance:none;display:inline-flex;align-items:center;justify-content:center;
  min-height:42px;padding:10px 15px;border:1px solid rgba(113,109,104,.23);
  border-radius:8px;background:#FFFFFF;color:#272729;cursor:pointer;
- font:700 12px/1.4 inherit;white-space:nowrap;
+ font-family:inherit;font-size:12px;font-weight:700;line-height:1.4;white-space:nowrap;
  box-shadow:0 1px 0 rgba(0,0,0,.045);
  transition:background .15s,border-color .15s,transform .15s;
 }
